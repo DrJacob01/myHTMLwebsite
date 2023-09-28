@@ -1,0 +1,17 @@
+
+        body{
+            background-color: rgb(116, 122, 177);
+        }
+        h1{
+            color: rgb(0, 0, 0);
+        }
+        p{
+            color: rgb(53, 53, 53);
+        }
+        ol {
+            color: #08002b;
+        }
+        ul{
+            color: #08002b;
+            font-size: 24px;
+        }
