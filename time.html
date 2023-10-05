@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="clock.ico">
+    <style>
+        body {
+            background-image: url('Spacebackground.jpg ');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: black; 
+        }
+
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .clock {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Style for digit containers (numbers and colons) */
+        .digit-container {
+            display: inline;
+            margin: 5px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 48px;
+            min-width: 40px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        /* Style for colons */
+        .colon {
+            display: inline;
+            font-size: 30px;
+            margin: 0px;
+        }
+
+        /* Style for "AM" and "PM" */
+        .am-pm {
+            font-size: 36px;
+            font-weight: bold;
+            color: green;
+            margin-top: 30px; /* Increase margin-top for more spacing */
+        }
+
+        .pm {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <!-- Hour container -->
+        <div class="digit-container" id="hour"></div>
+        <!-- Colon container -->
+        <div class="colon">:</div>
+        <!-- Minute container -->
+        <div class="digit-container" id="minute"></div>
+        <!-- Colon container -->
+        <div class="colon">:</div>
+        <!-- Second container -->
+        <div class="digit-container" id="second"></div>
+        <!-- AM/PM container -->
+        <div class="am-pm" id="ampm"></div>
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const amPm = hours < 12 ? 'AM' : 'PM';
+            
+            const hours12 = hours % 12 || 12;
+            
+            document.getElementById('hour').textContent = hours12;
+            document.getElementById('minute').textContent = minutes;
+            document.getElementById('second').textContent = seconds;
+            document.getElementById('ampm').textContent = amPm;
+            
+            if (amPm === 'AM') {
+                document.getElementById('ampm').classList.remove('pm');
+            } else {
+                document.getElementById('ampm').classList.add('pm');
+            }
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial update
+        updateClock();
+    </script>
+</body>
+</html>
